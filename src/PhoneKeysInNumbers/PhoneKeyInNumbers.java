@@ -1,37 +1,36 @@
-//CaduAxe
-//Country: Brazil/Pais: Brasil
 //I'm sorry for my English
-
 package PhoneKeysInNumbers;
 
 import java.util.Scanner;
-import javax.swing.JFrame;
 
 /**
  *
- * @author carlo
+ * @author KaduAxe
  */
 public class PhoneKeyInNumbers {
-    JFrame frame = new JFrame();
+
+    static final String REGEX = "^[A-Z0-9\\-]+$";
+
     /**
      *
-     * @param args
+     * @param letters String - The letters
+     * @return String 
+     * @throws PhoneKeysInNumbers.InvalideLatters
+     * @precondition letters.matches([A-Z0-9\\-]+)
      */
-    public static void main(String[] args) {
-        String s = new Scanner(System.in).nextLine();
-        //get an String with the letters: 'A', 'B', it's possible write other keys, but this letters will be not transformed
-        //pega uma String com as letras: 'A', 'B', é possivel escrever outras chaves, mas elas não serão transformadas
+    public static String toNumbers(String letters) throws InvalideLatters {
+        if(isvalid(letters)) 
+            throw new  InvalideLatters();
 
-        s = s.toUpperCase();
-
-        for (char c : s.toCharArray()) {
-            s = s.replace(c, ChartoNum.getEnum(c));
+        for (char c : letters.toCharArray()) {
+            letters = letters.replace(c, ChartoNum.getEnum(c));
         }
-        //transform the letters in numbers, to  more information see the ChartoNum class
-        //transforma as letras em numeros, para mais informacoes veja a classe ChartoNum
-        
-        //show the final result
-        //mostra o resultado final
-        System.out.println(s);
+        return letters;
     }
+
+    private static boolean isvalid(String letters) {
+        return !letters.matches(REGEX);
+    }
+}
+class InvalideLatters extends Exception{
 }
