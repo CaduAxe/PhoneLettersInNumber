@@ -1,8 +1,6 @@
 //I'm sorry for my English
 package PhoneKeysInNumbers;
 
-import java.util.Scanner;
-
 /**
  *
  * @author KaduAxe
@@ -23,7 +21,7 @@ public class PhoneKeyInNumbers {
             throw new  InvalideLatters();
 
         for (char c : letters.toCharArray()) {
-            letters = letters.replace(c, ChartoNum.getEnum(c));
+            letters = letters.replace(c, ChartoNumEnum.getEnum(c));
         }
         return letters;
     }
