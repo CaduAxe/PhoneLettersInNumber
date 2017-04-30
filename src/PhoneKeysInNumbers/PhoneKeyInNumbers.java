@@ -5,13 +5,14 @@
 package PhoneKeysInNumbers;
 
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
  *
  * @author carlo
  */
 public class PhoneKeyInNumbers {
-
+    JFrame frame = new JFrame();
     /**
      *
      * @param args
